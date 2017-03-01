@@ -64,7 +64,7 @@ func NewFileLogWriter(fname string, rotate bool) *FileLogWriter {
 		rec:       make(chan *LogRecord, LogBufferLength),
 		rot:       make(chan bool),
 		filename:  fname,
-		format:    "[%D %T] [%L] (%S) %M",
+		format:    "[%D %T] [%L] %M",
 		rotate:    rotate,
 		maxbackup: 999,
 	}

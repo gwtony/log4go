@@ -80,7 +80,7 @@ const (
 
 // Logging level strings
 var (
-	levelStrings = [...]string{"FNST", "FINE", "DEBG", "TRAC", "INFO", "WARN", "EROR", "CRIT"}
+	levelStrings = [...]string{"FNST", "FINE", "DEBUG", "TRAC", "INFO", "WARN", "ERROR", "CRIT"}
 )
 
 func (l Level) String() string {
@@ -196,7 +196,8 @@ func (log Logger) intLogf(lvl Level, format string, args ...interface{}) {
 	}
 
 	// Determine caller func
-	pc, _, lineno, ok := runtime.Caller(2)
+	pc, _, lineno, ok := runtime.Caller(3)
+	//pc, _, lineno, ok := runtime.Caller(2)
 	src := ""
 	if ok {
 		src = fmt.Sprintf("%s:%d", runtime.FuncForPC(pc).Name(), lineno)
